@@ -1,10 +1,14 @@
 import streamlit as st
 from groq import Groq
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # 1. Importar la librería para cargar variables de entorno
 
-# Cargar variables de entorno
-load_dotenv()
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()  # 2. Llamar a load_dotenv() para cargar las variables desde el .env
+
+# Verificar que la clave de API se haya cargado correctamente
+api_key = os.getenv('GROQ_API_KEY')  # 3. Obtener la clave de API desde las variables de entorno
+print(f"Clave de API cargada: {api_key}")  # 4. Imprimir la clave para verificar que se cargó
 
 # Configuración de modelos de Groq
 MODELOS = [
@@ -13,8 +17,8 @@ MODELOS = [
     'gemma-7b-it'
 ]
 
-# Inicializar el cliente de Groq
-client = Groq(api_key=os.getenv('GROQ_API_KEY'))
+# Inicializar el cliente de Groq usando la clave cargada
+client = Groq(api_key=api_key)  # 5. Usar la clave cargada para configurar el cliente
 
 # Inicializar el historial de chat en la sesión
 if "messages" not in st.session_state:
