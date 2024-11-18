@@ -21,6 +21,9 @@ wheels/
 .installed.cfg
 *.egg
 
+# Archivos de configuración sensibles
+.env
+
 # Virtual Environment
 venv/
 ENV/
